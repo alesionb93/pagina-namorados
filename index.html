@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nosso Amor</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="hearts"></div>
+  <div class="container">
+    <img src="assets/capaDaMusica.jpg" alt="Capa da música" class="cover"/>
+    <audio autoplay loop>
+      <source src="assets/musica.mp3" type="audio/mpeg"/>
+      Seu navegador não suporta áudio.
+    </audio>
+    <div class="carousel">
+      <div class="slides">
+        <!-- Fotos serão inseridas dinamicamente via JavaScript -->
+      </div>
+    </div>
+    <hr />
+    <div class="mensagem">
+      <p>
+        Desde o nosso primeiro olhar, tudo mudou. Com você, a vida ficou mais leve, divertida e cheia de amor. Obrigado por ser meu par perfeito. ❤️
+      </p>
+    </div>
+  </div>
+  <script>
+    const imagens = [
+      "foto1.jpg", "foto2.jpg", "foto3.jpg", "foto4.jpg", "foto5.jpg",
+      "foto6.jpg", "foto7.jpg", "foto8.jpg", "foto9.jpg"
+    ];
+    const slidesContainer = document.querySelector(".slides");
+    imagens.forEach(foto => {
+      const img = document.createElement("img");
+      img.src = `assets/${foto}`;
+      slidesContainer.appendChild(img);
+    });
+
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % imagens.length;
+      slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+    }, 3000);
+  </script>
+</body>
+</html>
