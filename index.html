@@ -1,49 +1,56 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nosso Amor</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para o Amor da Minha Vida 💖</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="hearts"></div>
-  <div class="container">
-    <img src="assets/capaDaMusica.jpg" alt="Capa da música" class="cover"/>
-    <audio autoplay loop>
-      <source src="assets/musica.mp3" type="audio/mpeg"/>
-      Seu navegador não suporta áudio.
-    </audio>
-    <div class="carousel">
-      <div class="slides">
-        <!-- Fotos serão inseridas dinamicamente via JavaScript -->
-      </div>
-    </div>
-    <hr />
-    <div class="mensagem">
-      <p>
-        Desde o nosso primeiro olhar, tudo mudou. Com você, a vida ficou mais leve, divertida e cheia de amor. Obrigado por ser meu par perfeito. ❤️
-      </p>
+  <!-- 🎵 PLAYER DE MÚSICA -->
+  <div class="music-player">
+    <img src="capaDaMusica.jpg" alt="Capa da música" class="cover" />
+    <div class="controls">
+      <button id="playPauseBtn">⏸️</button>
+      <span>Ed Sheeran – Perfect</span>
+      <audio id="audio" src="musica.mp3" autoplay loop></audio>
     </div>
   </div>
-  <script>
-    const imagens = [
-      "foto1.jpg", "foto2.jpg", "foto3.jpg", "foto4.jpg", "foto5.jpg",
-      "foto6.jpg", "foto7.jpg", "foto8.jpg", "foto9.jpg"
-    ];
-    const slidesContainer = document.querySelector(".slides");
-    imagens.forEach(foto => {
-      const img = document.createElement("img");
-      img.src = `assets/${foto}`;
-      slidesContainer.appendChild(img);
-    });
 
-    let index = 0;
-    setInterval(() => {
-      index = (index + 1) % imagens.length;
-      slidesContainer.style.transform = `translateX(-${index * 100}%)`;
-    }, 3000);
-  </script>
+  <!-- 🖼️ CARROSSEL DE FOTOS -->
+  <div class="carousel">
+    <div class="carousel-track">
+      <img src="assets/foto1.jpg" alt="Foto 1" />
+      <img src="assets/foto2.jpg" alt="Foto 2" />
+      <img src="assets/foto3.jpg" alt="Foto 3" />
+      <img src="assets/foto4.jpg" alt="Foto 4" />
+      <img src="assets/foto5.jpg" alt="Foto 5" />
+      <img src="assets/foto6.jpg" alt="Foto 6" />
+      <img src="assets/foto7.jpg" alt="Foto 7" />
+      <img src="assets/foto8.jpg" alt="Foto 8" />
+      <img src="assets/foto9.jpg" alt="Foto 9" />
+    </div>
+  </div>
+
+  <!-- 💗 CANVAS CORAÇÕES -->
+  <canvas id="heartsCanvas"></canvas>
+
+  <!-- ⏳ CONTADOR DE TEMPO JUNTOS -->
+  <div class="counter">
+    <h2>Estamos juntos há:</h2>
+    <p id="timeTogether"></p>
+  </div>
+
+  <!-- 💌 MENSAGEM FINAL -->
+  <hr />
+  <div class="final-message">
+    <p>
+      Desde o dia em que te conheci, meu mundo ficou mais bonito, mais leve e mais cheio de amor.<br />
+      Obrigado por ser exatamente quem você é.<br />
+      Amo cada detalhe nosso e amo a gente por inteiro, te amo do fundo do meu coração 💖
+    </p>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
