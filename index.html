@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Te Amo ❤️</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="music-player">
+        <img src="assets/cover.jpg" alt="Capa da Música" class="cover" />
+        <h2>Perfect</h2>
+        <h3>Ed Sheeran</h3>
+        <audio controls autoplay loop>
+            <source src="assets/music.mp3" type="audio/mp3" />
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+    </div>
+
+    <div class="carousel">
+        <img src="assets/foto1.jpg" />
+        <img src="assets/foto2.jpg" />
+        <img src="assets/foto3.jpg" />
+        <img src="assets/foto5.jpg" />
+        <img src="assets/foto6.jpg" />
+        <img src="assets/foto7.jpg" />
+        <img src="assets/foto8.jpg" />
+    </div>
+
+    <p class="contador" id="contador"></p>
+
+    <hr />
+
+    <p class="mensagem">
+        Desde o dia em que te conheci, meu mundo ficou mais bonito, mais leve e mais cheio de amor.
+        Obrigado por ser exatamente quem você é. Amo cada detalhe nosso e amo a gente por inteiro,
+        te amo do fundo do meu coração 💖
+    </p>
+
+    <script>
+        const dataAmor = new Date("2023-12-26T00:00:00");
+        const contador = document.getElementById("contador");
+
+        function atualizarContador() {
+            const agora = new Date();
+            const diferenca = agora - dataAmor;
+
+            const meses = Math.floor(diferenca / (1000 * 60 * 60 * 24 * 30.44));
+            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24)) % 30;
+            const horas = agora.getHours();
+            const minutos = agora.getMinutes();
+            const segundos = agora.getSeconds();
+
+            contador.textContent = `Eu te amo há: ${meses} meses, ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
+        }
+
+        setInterval(atualizarContador, 1000);
+        atualizarContador();
+    </script>
+</body>
+</html>
