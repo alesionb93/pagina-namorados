@@ -7,9 +7,6 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <!-- Container para GIFs animados -->
-  <div class="hearts-container" id="hearts-container"></div>
-
   <div class="player">
     <div class="player-box">
       <img src="assets/cover.jpg" alt="Capa do Álbum" class="cover">
@@ -36,6 +33,7 @@
   </div>
 
   <div class="contador" id="contador">Calculando...</div>
+
   <hr>
 
   <p class="mensagem">
@@ -61,4 +59,33 @@
       totalSeconds %= 3600;
       const minutos = Math.floor(totalSeconds / 60);
       const segundos = totalSeconds % 60;
-      contador.textContent = `Estamos juntos há: ${anos} ano(s), ${meses} mês(es), ${dias} dia(s
+      contador.textContent = `Estamos juntos há: ${anos} ano(s), ${meses} mês(es), ${dias} dia(s), ${horas} hora(s), ${minutos} minuto(s) e ${segundos} segundo(s) 💘`;
+    }
+    updateCounter();
+    setInterval(updateCounter, 1000);
+
+    // Player
+    const music = document.getElementById("music");
+    const btn = document.getElementById("playPauseBtn");
+    btn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play().catch(() => alert("Toque para ativar a música 🎵"));
+        btn.textContent = "⏸️";
+      } else {
+        music.pause();
+        btn.textContent = "▶️";
+      }
+    });
+
+    // Carrossel
+    const slides = document.querySelectorAll(".slide");
+    let idx = 0;
+    setInterval(() => {
+      slides.forEach((s, i) => {
+        s.classList.toggle("active", i === idx);
+      });
+      idx = (idx + 1) % slides.length;
+    }, 3000);
+  </script>
+</body>
+</html>
