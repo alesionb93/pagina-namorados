@@ -112,7 +112,6 @@ body {
   height: 100vh;
   z-index: 9999;
   pointer-events: none;
-  overflow: hidden;
 }
 
 .overlay-gif img {
@@ -137,3 +136,49 @@ body {
   }
 }
 
+/* Overlay de mensagem surpresa */
+#welcomeOverlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  color: white;
+}
+
+.mensagem-surpresa {
+  text-align: center;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 90%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 30px rgba(255,255,255,0.2);
+}
+
+.mensagem-surpresa p {
+  font-size: 1.4em;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+#startBtn {
+  font-size: 1.2em;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  color: #e91e63;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#startBtn:hover {
+  background: #ffe3ed;
+}
