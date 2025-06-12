@@ -1,110 +1,96 @@
-body {
-  margin: 0;
-  background: pink;
-  font-family: 'Arial', sans-serif;
-  color: white;
-  text-align: center;
-  position: relative;
-  overflow-x: hidden;
-}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Te Amo</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="hearts"></div>
 
-.player {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-}
+  <div class="player">
+    <div class="player-box">
+      <img src="assets/cover.jpg" alt="Capa do Álbum" class="cover">
+      <div class="info">
+        <strong>Perfect</strong><br>
+        <span>Ed Sheeran</span>
+      </div>
+      <button id="playPauseBtn">▶️</button>
+      <audio id="music" loop>
+        <source src="assets/musica.mp3" type="audio/mp3">
+      </audio>
+    </div>
+  </div>
 
-.player-box {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  max-width: 90%;
-  margin: 0 auto;
-  flex-wrap: wrap;
-}
+  <div class="carousel">
+    <img src="assets/foto1.jpg" class="slide active" alt="Foto 1 do casal">
+    <img src="assets/foto2.jpg" class="slide" alt="Foto 2 do casal">
+    <img src="assets/foto3.jpg" class="slide" alt="Foto 3 do casal">
+    <img src="assets/foto4.jpg" class="slide" alt="Foto 4 do casal">
+    <img src="assets/foto5.jpg" class="slide" alt="Foto 5 do casal">
+    <img src="assets/foto6.jpg" class="slide" alt="Foto 6 do casal">
+    <img src="assets/foto7.jpg" class="slide" alt="Foto 7 do casal">
+    <img src="assets/foto8.jpg" class="slide" alt="Foto 8 do casal">
+  </div>
 
-.cover {
-  width: 100px;
-  border-radius: 10px;
-}
+  <div class="contador" id="contador">Calculando...</div>
 
-.info {
-  font-size: 1.2em;
-  text-align: left;
-}
+  <hr>
 
-#playPauseBtn {
-  background: rgba(255, 255, 255, 0.5);
-  color: #333;
-  border: none;
-  font-size: 1.5em;
-  cursor: pointer;
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
+  <p class="mensagem">
+    Desde o dia em que te conheci, meu mundo ficou mais bonito, mais leve e mais cheio de amor.  
+    Obrigado por ser exatamente quem você é.  
+    Amo cada detalhe nosso e amo a gente por inteiro, te amo do fundo do meu coração 💖
+  </p>
 
-.carousel {
-  position: relative;
-  height: 300px;
-  width: 100%;
-  max-width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
+  <script>
+    const startDate = new Date("2024-12-26T00:00:00");
+    const contador = document.getElementById("contador");
 
-.slide {
-  position: absolute;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  max-height: 300px;
-  object-fit: cover;
-}
+    function updateCounter() {
+      const now = new Date();
+      let totalSeconds = Math.floor((now - startDate) / 1000);
 
-.slide.active {
-  opacity: 1;
-  z-index: 2;
-}
+      const anos = Math.floor(totalSeconds / (3600 * 24 * 365));
+      totalSeconds %= 3600 * 24 * 365;
+      const meses = Math.floor(totalSeconds / (3600 * 24 * 30));
+      totalSeconds %= 3600 * 24 * 30;
+      const dias = Math.floor(totalSeconds / (3600 * 24));
+      totalSeconds %= 3600 * 24;
+      const horas = Math.floor(totalSeconds / 3600);
+      totalSeconds %= 3600;
+      const minutos = Math.floor(totalSeconds / 60);
+      const segundos = totalSeconds % 60;
 
-.mensagem {
-  font-size: 1.2em;
-  padding: 20px;
-  text-shadow: 1px 1px 2px #000;
-}
+      contador.textContent = `Estamos juntos há: ${anos} ano(s), ${meses} mês(es), ${dias} dia(s), ${horas} hora(s), ${minutos} minuto(s) e ${segundos} segundo(s) 💘`;
+    }
 
-.contador {
-  font-size: 1.5em;
-  margin: 20px 0;
-  text-shadow: 1px 1px 2px #000;
-  color: white;
-}
+    updateCounter();
+    setInterval(updateCounter, 1000);
 
-.hearts {
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><text y="15" font-size="20">💖</text></svg>');
-  background-repeat: repeat;
-  animation: float 20s linear infinite;
-  opacity: 0.1;
-  z-index: 1;
-}
+    const music = document.getElementById("music");
+    const btn = document.getElementById("playPauseBtn");
 
-@keyframes float {
-  0% { background-position: 0 0; }
-  100% { background-position: 0 -1000px; }
-}
+    btn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play().catch(() => {
+          alert("Para escutar a música, por favor toque o botão 👍");
+        });
+        btn.textContent = "⏸️";
+      } else {
+        music.pause();
+        btn.textContent = "▶️";
+      }
+    });
+
+    const slides = document.querySelectorAll(".slide");
+    let index = 0;
+    setInterval(() => {
+      slides[index].classList.remove("active");
+      index = (index + 1) % slides.length;
+      slides[index].classList.add("active");
+    }, 3000);
+  </script>
+</body>
+</html>
