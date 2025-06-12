@@ -1,4 +1,3 @@
-/* Estilo base */
 body {
   margin: 0;
   background: pink;
@@ -9,7 +8,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Player */
 .player {
   padding: 20px;
   display: flex;
@@ -54,12 +52,10 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 }
-
 #playPauseBtn:hover {
   background: rgba(255, 255, 255, 0.8);
 }
 
-/* Carrossel */
 .carousel {
   position: relative;
   height: 300px;
@@ -81,34 +77,25 @@ body {
   max-height: 300px;
   object-fit: cover;
 }
-
 .slide.active {
   opacity: 1;
   z-index: 2;
 }
 
-/* Correções específicas por imagem */
-.foco-foto2 {
-  object-position: center 37%; /* Ex: mostra mais o rosto no topo */
-}
-
-.foco-foto3 {
-  object-position: center 25%; /* Ex: mostra mais as pernas no fundo */
-}
-
+/* Posição personalizada por imagem */
+.foco-foto2 { object-position: center 20%; }
+.foco-foto3 { object-position: center 85%; }
 .foco-foto8 {
-  object-position: center 75%; /* Ex: centralizada com deszoom */
+  object-position: center center;
+  transform: scale(0.85);
 }
 
-
-/* Mensagem final */
 .mensagem {
   font-size: 1.2em;
   padding: 20px;
   text-shadow: 1px 1px 2px #000;
 }
 
-/* Contador */
 .contador {
   font-size: 1.5em;
   margin: 20px 0;
@@ -116,7 +103,7 @@ body {
   color: white;
 }
 
-/* Corações "P" flutuantes */
+/* Efeito letra "P" flutuante */
 .hearts-container {
   position: fixed;
   top: 0;
@@ -126,7 +113,6 @@ body {
   height: 100%;
   z-index: 10;
 }
-
 .heart-p {
   position: absolute;
   font-size: 16px;
@@ -136,24 +122,15 @@ body {
   font-weight: bold;
   user-select: none;
 }
-
 @keyframes floatHeart {
-  0% {
-    opacity: 0;
-    transform: scale(0.5) translateY(0px);
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-    transform: scale(1) translateY(-120px);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.2) translateY(-150px);
-  }
-  .gif-coracoes {
+  0% { opacity: 0; transform: scale(0.5) translateY(0px); }
+  10% { opacity: 1; }
+  90% { opacity: 1; transform: scale(1) translateY(-120px); }
+  100% { opacity: 0; transform: scale(1.2) translateY(-150px); }
+}
+
+/* GIF de corações em overlay */
+.gif-coracoes {
   position: fixed;
   top: 0;
   left: 0;
@@ -161,13 +138,11 @@ body {
   height: 100vh;
   object-fit: cover;
   pointer-events: none;
-  z-index: 99;
+  z-index: 9999;
   opacity: 0;
   animation: gifFade 6s infinite ease-in-out;
 }
-
 @keyframes gifFade {
   0%, 100% { opacity: 0; }
-  40% { opacity: 0.5; }
-  60% { opacity: 0.5; }
+  40%, 60% { opacity: 0.5; }
 }
