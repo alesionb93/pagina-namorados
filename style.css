@@ -88,18 +88,19 @@ body {
 }
 
 /* Correções específicas por imagem */
-.foto-ajuste-top {
-  object-position: center 38%;
+.foco-foto2 {
+  object-position: center 37%; /* Ex: mostra mais o rosto no topo */
 }
 
-.foto-ajuste-bottom {
-  object-position: bottom center;
+.foco-foto3 {
+  object-position: center 45%; /* Ex: mostra mais as pernas no fundo */
 }
 
-.foto-ajuste-center-deszoom {
-  object-position: center center;
+.foco-foto8 {
+  object-position: center 55%; /* Ex: centralizada com deszoom */
   transform: scale(0.85);
 }
+
 
 /* Mensagem final */
 .mensagem {
