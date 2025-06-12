@@ -93,12 +93,11 @@ body {
 }
 
 .foco-foto3 {
-  object-position: center 45%; /* Ex: mostra mais as pernas no fundo */
+  object-position: center 55%; /* Ex: mostra mais as pernas no fundo */
 }
 
 .foco-foto8 {
-  object-position: center 55%; /* Ex: centralizada com deszoom */
-  transform: scale(0.85);
+  object-position: center 60%; /* Ex: centralizada com deszoom */
 }
 
 
