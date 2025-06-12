@@ -96,9 +96,11 @@ body {
 }
 
 .contador {
+  font-family: Arial, sans-serif;
   font-size: 1.5em;
   margin: 20px 0;
   text-shadow: 1px 1px 2px #000;
+  color: white;
 }
 
 .overlay-gif {
