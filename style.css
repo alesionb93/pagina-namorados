@@ -81,15 +81,15 @@ body {
 
 /* Ajustes individuais nas imagens */
 .foco-foto2 {
-  object-position: center 20%;
+  object-position: center 37%;
 }
 
 .foco-foto3 {
-  object-position: center 85%;
+  object-position: center 25%;
 }
 
 .foco-foto8 {
-  object-position: center 50%;
+  object-position: center 55%;
   transform: scale(0.85);
 }
 
