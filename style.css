@@ -89,7 +89,7 @@ body {
 
 /* Correções específicas por imagem */
 .foto-ajuste-top {
-  object-position: top center;
+  object-position: center 80%;
 }
 
 .foto-ajuste-bottom {
