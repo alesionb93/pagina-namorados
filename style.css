@@ -42,14 +42,19 @@ body {
 }
 
 #playPauseBtn {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.6);
   color: #333;
   border: none;
-  font-size: 1.5em;
+  font-size: 1.8em;
   cursor: pointer;
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 10px 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+#playPauseBtn:hover {
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .carousel {
@@ -92,21 +97,41 @@ body {
   color: white;
 }
 
-.hearts {
-  pointer-events: none;
+/* Efeito P Flutuante */
+.hearts-container {
   position: fixed;
   top: 0;
   left: 0;
+  pointer-events: none;
   width: 100%;
   height: 100%;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PHRleHQgeT0iMTUiIGZvbnQtc2l6ZT0iMjAiPuKZhyA8L3RleHQ+PC9zdmc+');
-  background-repeat: repeat;
-  animation: float 20s linear infinite;
-  opacity: 0.1;
-  z-index: 1;
+  z-index: 10;
 }
 
-@keyframes float {
-  0% { background-position: 0 0; }
-  100% { background-position: 0 -1000px; }
+.heart-p {
+  position: absolute;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+  animation: floatHeart 4s ease-in-out forwards;
+  opacity: 0;
+  font-weight: bold;
+  user-select: none;
+}
+
+@keyframes floatHeart {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(0px);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1) translateY(-120px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2) translateY(-150px);
+  }
 }
