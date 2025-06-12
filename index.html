@@ -5,42 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Te Amo</title>
   <link rel="stylesheet" href="style.css"/>
-  <style>
-    /* Overlay de boas-vindas para ativar som no iOS */
-    #welcomeOverlay {
-      position: fixed;
-      top:0; left:0;
-      width:100vw;
-      height:100vh;
-      background: rgba(0,0,0,0.7);
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      z-index:10000;
-    }
-
-    #welcomeOverlay button {
-      font-size:1.5em;
-      padding:20px 40px;
-      border:none;
-      border-radius:10px;
-      background: #fff;
-      color: #e91e63;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      cursor:pointer;
-      transition: background 0.3s;
-    }
-
-    #welcomeOverlay button:hover {
-      background: #ffe3ed;
-    }
-  </style>
 </head>
 <body>
-  <!-- Overlay inicial obrigatória para autoplay com som -->
+  <!-- Overlay inicial com surpresa -->
   <div id="welcomeOverlay">
-    <button id="startBtn">Clique para iniciar a música 🎵</button>
+    <div class="mensagem-surpresa">
+      <p>
+        Tenho uma surpresa preparada com muito carinho pra você. <br>
+        Clique no botão abaixo para descobrir... 💖
+      </p>
+      <button id="startBtn">Ver Surpresa ✨</button>
+    </div>
   </div>
 
   <div class="player">
@@ -130,7 +105,7 @@
       }
     });
 
-    // Carrossel de fotos
+    // Carrossel
     const slides = document.querySelectorAll(".slide");
     let idx = 0;
     setInterval(() => {
