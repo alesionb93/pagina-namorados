@@ -69,16 +69,16 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(255,255,255,0.05), transparent);
+  background: radial-gradient(circle at center, rgba(255,255,255,0.08), transparent);
   z-index: 1;
   pointer-events: none;
 }
 
 .carousel-deco img {
   position: absolute;
-  width: 40px;
+  width: 48px;
   z-index: 3;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 .heart-top-left {
   top: 10px;
@@ -98,8 +98,8 @@ body {
   max-height: 300px;
   object-fit: cover;
   object-position: center center;
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .slide.active {
@@ -107,6 +107,10 @@ body {
   z-index: 2;
   transform: scale(1);
 }
+
+.foco-foto2 { object-position: center 37%; }
+.foco-foto3 { object-position: center 25%; }
+.foco-foto8 { object-position: center 75%; }
 
 .contador-box {
   display: flex;
@@ -146,4 +150,71 @@ body {
   top: 0; left: 0;
   width: 100vw; height: 100vh;
   z-index: 9999;
-  pointer-events
+  pointer-events: none;
+}
+
+.overlay-gif img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  object-fit: cover;
+  opacity: 0.3;
+  animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.05); opacity: 0.4; }
+}
+
+#welcomeOverlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  color: white;
+}
+
+.mensagem-surpresa {
+  text-align: center;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 90%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 30px rgba(255,255,255,0.2);
+}
+
+.mensagem-surpresa p {
+  font-size: 1.4em;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+#startBtn {
+  font-size: 1.2em;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  color: #e91e63;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  animation: pulseButton 1.5s infinite;
+}
+
+#startBtn:hover {
+  background: #ffe3ed;
+}
+
+@keyframes pulseButton {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
