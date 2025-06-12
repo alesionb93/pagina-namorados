@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Te Amo</title>
   <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Overlay inicial com surpresa -->
@@ -114,6 +115,9 @@
       });
       idx = (idx + 1) % slides.length;
     }, 3000);
-  </script>
-</body>
-</html>
+
+    // Corações flutuantes
+    const heartsContainer = document.createElement("div");
+    heartsContainer.style.position = "fixed";
+    heartsContainer.style.top = "0";
+    heartsContainer.style.left = "0";
