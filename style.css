@@ -82,67 +82,9 @@ body {
   z-index: 2;
 }
 
-/* Posição personalizada por imagem */
+/* Ajustes por imagem */
 .foco-foto2 { object-position: center 20%; }
 .foco-foto3 { object-position: center 85%; }
 .foco-foto8 {
   object-position: center center;
-  transform: scale(0.85);
-}
-
-.mensagem {
-  font-size: 1.2em;
-  padding: 20px;
-  text-shadow: 1px 1px 2px #000;
-}
-
-.contador {
-  font-size: 1.5em;
-  margin: 20px 0;
-  text-shadow: 1px 1px 2px #000;
-  color: white;
-}
-
-/* Efeito letra "P" flutuante */
-.hearts-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-}
-.heart-p {
-  position: absolute;
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.5);
-  animation: floatHeart 4s ease-in-out forwards;
-  opacity: 0;
-  font-weight: bold;
-  user-select: none;
-}
-@keyframes floatHeart {
-  0% { opacity: 0; transform: scale(0.5) translateY(0px); }
-  10% { opacity: 1; }
-  90% { opacity: 1; transform: scale(1) translateY(-120px); }
-  100% { opacity: 0; transform: scale(1.2) translateY(-150px); }
-}
-
-/* GIF de corações em overlay */
-.gif-coracoes {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0;
-  animation: gifFade 6s infinite ease-in-out;
-}
-@keyframes gifFade {
-  0%, 100% { opacity: 0; }
-  40%, 60% { opacity: 0.5; }
-}
+  transform
