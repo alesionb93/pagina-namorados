@@ -1,177 +1,141 @@
-body {
-  margin: 0;
-  background: pink;
-  font-family: 'Pacifico', cursive, Arial, sans-serif;
-  color: white;
-  text-align: center;
-  overflow-x: hidden;
-}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Te Amo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div id="welcomeOverlay">
+    <div class="mensagem-surpresa">
+      <p>
+        Tenho uma surpresa preparada com muito carinho pra você. <br>
+        Clique no botão abaixo para descobrir... 💖
+      </p>
+      <button id="startBtn">Ver Surpresa ✨</button>
+    </div>
+  </div>
 
-.player {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-}
+  <div class="player">
+    <div class="player-box">
+      <img src="assets/cover.jpg" alt="Capa do Álbum" class="cover">
+      <div class="info">
+        <strong>Perfect</strong><br>
+        <span>Ed Sheeran</span>
+      </div>
+      <button id="playPauseBtn">▶️</button>
+      <audio id="music" loop>
+        <source src="assets/musica.mp3" type="audio/mp3">
+      </audio>
+    </div>
+  </div>
 
-.player-box {
-  background: rgba(255,255,255,0.25);
-  border: 1px solid rgba(255,255,255,0.4);
-  border-radius: 20px;
-  padding: 20px 25px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  backdrop-filter: blur(10px);
-  max-width: 95%;
-  margin: 0 auto;
-  flex-wrap: wrap;
-}
+  <div class="carousel">
+    <img src="assets/foto1.jpg" class="slide active" alt="Foto 1">
+    <img src="assets/foto2.jpg" class="slide foco-foto2" alt="Foto 2">
+    <img src="assets/foto3.jpg" class="slide foco-foto3" alt="Foto 3">
+    <img src="assets/foto4.jpg" class="slide" alt="Foto 4">
+    <img src="assets/foto5.jpg" class="slide" alt="Foto 5">
+    <img src="assets/foto6.jpg" class="slide" alt="Foto 6">
+    <img src="assets/foto7.jpg" class="slide" alt="Foto 7">
+    <img src="assets/foto8.jpg" class="slide foco-foto8" alt="Foto 8">
+  </div>
 
-.cover {
-  width: 100px;
-  border-radius: 10px;
-}
+  <div class="contador" id="contador">Calculando...</div>
 
-.info {
-  font-size: 1.2em;
-  text-align: left;
-}
+  <hr>
 
-#playPauseBtn {
-  background: rgba(255,255,255,0.6);
-  color: #333;
-  border: none;
-  font-size: 1.8em;
-  cursor: pointer;
-  border-radius: 12px;
-  padding: 10px 16px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: 0.3s;
-}
+  <p class="mensagem">
+    Desde o dia em que te conheci, meu mundo ficou mais bonito, mais leve e mais cheio de amor.  
+    Obrigado por ser exatamente quem você é.  
+    Amo cada detalhe nosso e amo a gente por inteiro, te amo do fundo do meu coração 💖
+  </p>
 
-#playPauseBtn:hover {
-  background: rgba(255,255,255,0.8);
-}
+  <div class="overlay-gif">
+    <img src="https://img1.picmix.com/output/stamp/normal/5/0/9/8/1308905_3b231.gif" alt="Coração Girando">
+  </div>
 
-.carousel {
-  position: relative;
-  height: 300px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
+  <script>
+    const startDate = new Date("2024-12-26T00:00:00");
+    const contador = document.getElementById("contador");
+    function updateCounter() {
+      const now = new Date();
+      let totalSeconds = Math.floor((now - startDate) / 1000);
+      const anos = Math.floor(totalSeconds / (3600 * 24 * 365));
+      totalSeconds %= 3600 * 24 * 365;
+      const meses = Math.floor(totalSeconds / (3600 * 24 * 30));
+      totalSeconds %= 3600 * 24 * 30;
+      const dias = Math.floor(totalSeconds / (3600 * 24));
+      totalSeconds %= 3600 * 24;
+      const horas = Math.floor(totalSeconds / 3600);
+      totalSeconds %= 3600;
+      const minutos = Math.floor(totalSeconds / 60);
+      const segundos = totalSeconds % 60;
+      contador.textContent = `Estamos juntos há: ${anos} ano(s), ${meses} mês(es), ${dias} dia(s), ${horas} hora(s), ${minutos} minuto(s) e ${segundos} segundo(s) 💘`;
+    }
+    updateCounter();
+    setInterval(updateCounter, 1000);
 
-.slide {
-  position: absolute;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-  width: 100%;
-  max-height: 300px;
-  object-fit: cover;
-  object-position: center center;
-}
+    const music = document.getElementById("music");
+    const btn = document.getElementById("playPauseBtn");
+    const overlay = document.getElementById("welcomeOverlay");
+    const startBtn = document.getElementById("startBtn");
 
-.slide.active {
-  opacity: 1;
-  z-index: 2;
-}
+    startBtn.addEventListener("click", () => {
+      music.play().then(() => {
+        overlay.style.display = "none";
+        btn.textContent = "⏸️";
+      }).catch(() => {
+        alert("Não foi possível iniciar a música. Tente novamente.");
+      });
+    });
 
-.foco-foto2 { object-position: center 37%; }
-.foco-foto3 { object-position: center 25%; }
-.foco-foto8 { object-position: center 75%; }
+    btn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play().catch(() => alert("Toque para ativar a música 🎵"));
+        btn.textContent = "⏸️";
+      } else {
+        music.pause();
+        btn.textContent = "▶️";
+      }
+    });
 
-.mensagem {
-  font-size: 1.2em;
-  padding: 20px;
-  text-shadow: 1px 1px 2px #000;
-  opacity: 0;
-  animation: fadeIn 3s ease forwards 2s;
-}
+    const slides = document.querySelectorAll(".slide");
+    let idx = 0;
+    setInterval(() => {
+      slides.forEach((s, i) => {
+        s.classList.toggle("active", i === idx);
+      });
+      idx = (idx + 1) % slides.length;
+    }, 3000);
 
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
+    const heartsContainer = document.createElement("div");
+    heartsContainer.style.position = "fixed";
+    heartsContainer.style.top = "0";
+    heartsContainer.style.left = "0";
+    heartsContainer.style.width = "100%";
+    heartsContainer.style.height = "100%";
+    heartsContainer.style.pointerEvents = "none";
+    heartsContainer.style.zIndex = "1000";
+    document.body.appendChild(heartsContainer);
 
-.contador {
-  font-size: 1.5em;
-  margin: 20px 0;
-  text-shadow: 1px 1px 2px #000;
-  color: white;
-}
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.textContent = "💖";
+      heart.style.position = "absolute";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.top = "100vh";
+      heart.style.fontSize = "24px";
+      heart.style.animation = "rise 4s linear forwards";
+      heartsContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }, 500);
 
-.overlay-gif {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  z-index: 9999;
-  pointer-events: none;
-}
-
-.overlay-gif img {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  object-fit: cover;
-  opacity: 0.3;
-  animation: pulse 8s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0.3; }
-  50% { transform: scale(1.05); opacity: 0.4; }
-}
-
-#welcomeOverlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.92);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
-  color: white;
-}
-
-.mensagem-surpresa {
-  text-align: center;
-  padding: 30px;
-  border-radius: 20px;
-  max-width: 90%;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 30px rgba(255,255,255,0.2);
-}
-
-.mensagem-surpresa p {
-  font-size: 1.4em;
-  margin-bottom: 25px;
-  line-height: 1.6;
-}
-
-#startBtn {
-  font-size: 1.2em;
-  padding: 12px 28px;
-  border: none;
-  border-radius: 8px;
-  background: #fff;
-  color: #e91e63;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-  animation: pulseButton 1.5s infinite;
-}
-
-#startBtn:hover {
-  background: #ffe3ed;
-}
-
-@keyframes pulseButton {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-}
+    const style = document.createElement('style');
+    style.textContent = `@keyframes rise { to { transform: translateY(-120vh); opacity: 0; } }`;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
