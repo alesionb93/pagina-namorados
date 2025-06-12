@@ -54,24 +54,26 @@ body {
   background: rgba(255,255,255,0.8);
 }
 
+/* CARROSSEL COMPLETO COM VISUALS */
 .carousel {
   position: relative;
-  height: 300px;
+  height: 320px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: 10px; /* Espaço para sombras */
 }
 
-/* Overlay com brilho sutil */
+/* Overlay mágico */
 .carousel::before {
   content: '';
   position: absolute;
   width: 100%;
   height: 100%;
   background: radial-gradient(circle at center, rgba(255,255,255,0.08), transparent);
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -79,7 +81,7 @@ body {
 .carousel-deco img {
   position: absolute;
   width: 48px;
-  z-index: 3;
+  z-index: 5; /* Visibilidade acima de slides */
   opacity: 0.7;
 }
 .heart-top-left {
@@ -91,24 +93,23 @@ body {
   right: 10px;
 }
 
-/* Imagens estilo cartão com transição suave */
+/* Slides com efeito e estilo */
 .slide {
   position: absolute;
   opacity: 0;
   transform: scale(0.96);
   transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
-  width: 100%;
+  width: 90%;
   max-height: 300px;
   object-fit: cover;
   object-position: center center;
   border-radius: 15px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
-
-/* Imagem ativa com escala 1 */
 .slide.active {
   opacity: 1;
-  z-index: 2;
+  z-index: 3;
   transform: scale(1);
 }
 
@@ -116,12 +117,12 @@ body {
 .foco-foto3 { object-position: center 25%; }
 .foco-foto8 { object-position: center 75%; }
 
+/* CONTADOR ESTILO WIDGET */
 .contador-box {
   display: flex;
   justify-content: center;
   margin: 20px;
 }
-
 .contador {
   font-family: Arial, sans-serif;
   font-size: 1.5em;
