@@ -64,20 +64,50 @@ body {
   overflow: hidden;
 }
 
+.carousel::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.05), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.carousel-deco img {
+  position: absolute;
+  width: 40px;
+  z-index: 3;
+  opacity: 0.6;
+}
+.heart-top-left {
+  top: 10px;
+  left: 10px;
+}
+.heart-top-right {
+  top: 10px;
+  right: 10px;
+}
+
 .slide {
   position: absolute;
   opacity: 0;
-  transition: opacity 1.5s ease-in-out;
+  transform: scale(0.96);
+  transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
   width: 100%;
   max-height: 300px;
   object-fit: cover;
   object-position: center center;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .slide.active {
   opacity: 1;
   z-index: 2;
+  transform: scale(1);
 }
+
 
 .foco-foto2 { object-position: center 37%; }
 .foco-foto3 { object-position: center 25%; }
