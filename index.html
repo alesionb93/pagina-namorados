@@ -68,17 +68,28 @@
     updateCounter();
     setInterval(updateCounter, 1000);
 
-    const music = document.getElementById("music");
-    const btn = document.getElementById("playPauseBtn");
-    btn.addEventListener("click", () => {
-      if (music.paused) {
-        music.play().catch(() => alert("Toque para ativar a música 🎵"));
-        btn.textContent = "⏸️";
-      } else {
-        music.pause();
-        btn.textContent = "▶️";
-      }
-    });
+const music = document.getElementById("music");
+const btn = document.getElementById("playPauseBtn");
+
+// Tentar autoplay ao carregar a página
+window.addEventListener("load", () => {
+  music.play().then(() => {
+    btn.textContent = "⏸️";
+  }).catch(() => {
+    console.log("Autoplay bloqueado 😢");
+  });
+});
+
+btn.addEventListener("click", () => {
+  if (music.paused) {
+    music.play().catch(() => alert("Toque para ativar a música 🎵"));
+    btn.textContent = "⏸️";
+  } else {
+    music.pause();
+    btn.textContent = "▶️";
+  }
+});
+
 
     const slides = document.querySelectorAll(".slide");
     let idx = 0;
