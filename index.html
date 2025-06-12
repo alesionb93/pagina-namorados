@@ -7,9 +7,7 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <!-- GIF flutuante sobre toda a página -->
-  <img src="https://img1.picmix.com/output/stamp/normal/5/0/9/8/1308905_3b231.gif" class="gif-coracoes" alt="Corações flutuando">
-
+  <!-- Container para GIFs animados -->
   <div class="hearts-container" id="hearts-container"></div>
 
   <div class="player">
@@ -95,24 +93,9 @@
       index = (index + 1) % slides.length;
     }, 3000);
 
+    // Efeito: GIFs de corações flutuando aleatoriamente
     const heartContainer = document.getElementById('hearts-container');
     function createHeart() {
-      const heart = document.createElement('span');
-      heart.classList.add('heart-p');
-      heart.textContent = 'P';
-      const size = Math.random() * 10 + 10;
-      heart.style.fontSize = `${size}px`;
-      heart.style.left = `${Math.random() * 100}%`;
-      heart.style.top = `${Math.random() * 100}%`;
-      heartContainer.appendChild(heart);
-      setTimeout(() => heart.remove(), 4000);
-    }
-    function startHearts() {
-      setInterval(() => {
-        if (document.querySelectorAll('.heart-p').length < 20) createHeart();
-      }, Math.random() * 800 + 400);
-    }
-    startHearts();
-  </script>
-</body>
-</html>
+      const heart = document.createElement('img');
+      heart.classList.add('gif-heart');
+      heart.src = 'http
