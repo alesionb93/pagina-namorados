@@ -15,9 +15,10 @@
         <span>Ed Sheeran</span>
       </div>
       <button id="playPauseBtn">▶️</button>
-<audio id="music" loop autoplay>
-  <source src="assets/musica.mp3" type="audio/mp3">
-</audio>
+      <!-- Muted aqui garante autoplay -->
+      <audio id="music" loop autoplay muted>
+        <source src="assets/musica.mp3" type="audio/mp3">
+      </audio>
     </div>
   </div>
 
@@ -48,6 +49,7 @@
   </div>
 
   <script>
+    // Contador
     const startDate = new Date("2024-12-26T00:00:00");
     const contador = document.getElementById("contador");
     function updateCounter() {
@@ -68,29 +70,31 @@
     updateCounter();
     setInterval(updateCounter, 1000);
 
-const music = document.getElementById("music");
-const btn = document.getElementById("playPauseBtn");
+    // Player com autoplay via muted
+    const music = document.getElementById("music");
+    const btn = document.getElementById("playPauseBtn");
 
-// Tentar autoplay ao carregar a página
-window.addEventListener("load", () => {
-  music.play().then(() => {
-    btn.textContent = "⏸️";
-  }).catch(() => {
-    console.log("Autoplay bloqueado 😢");
-  });
-});
+    window.addEventListener("load", () => {
+      music.muted = false;
+      music.play().then(() => {
+        btn.textContent = "⏸️";
+      }).catch(() => {
+        console.log("Autoplay bloqueado 😢. O usuário precisa interagir.");
+        btn.textContent = "▶️";
+      });
+    });
 
-btn.addEventListener("click", () => {
-  if (music.paused) {
-    music.play().catch(() => alert("Toque para ativar a música 🎵"));
-    btn.textContent = "⏸️";
-  } else {
-    music.pause();
-    btn.textContent = "▶️";
-  }
-});
+    btn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play().catch(() => alert("Toque para ativar a música 🎵"));
+        btn.textContent = "⏸️";
+      } else {
+        music.pause();
+        btn.textContent = "▶️";
+      }
+    });
 
-
+    // Carrossel de fotos
     const slides = document.querySelectorAll(".slide");
     let idx = 0;
     setInterval(() => {
