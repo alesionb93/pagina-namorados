@@ -25,7 +25,7 @@
   </div>
 
   <div class="carousel">
-    <img src="assets/foto1.jpg" class="slide" alt="Foto 1">
+    <img src="assets/foto1.jpg" class="slide active" alt="Foto 1">
     <img src="assets/foto2.jpg" class="slide foco-foto2" alt="Foto 2">
     <img src="assets/foto3.jpg" class="slide foco-foto3" alt="Foto 3">
     <img src="assets/foto4.jpg" class="slide" alt="Foto 4">
@@ -36,7 +36,6 @@
   </div>
 
   <div class="contador" id="contador">Calculando...</div>
-
   <hr>
 
   <p class="mensagem">
@@ -46,13 +45,12 @@
   </p>
 
   <script>
+    // Contador
     const startDate = new Date("2024-12-26T00:00:00");
     const contador = document.getElementById("contador");
-
     function updateCounter() {
       const now = new Date();
       let totalSeconds = Math.floor((now - startDate) / 1000);
-
       const anos = Math.floor(totalSeconds / (3600 * 24 * 365));
       totalSeconds %= 3600 * 24 * 365;
       const meses = Math.floor(totalSeconds / (3600 * 24 * 30));
@@ -63,39 +61,4 @@
       totalSeconds %= 3600;
       const minutos = Math.floor(totalSeconds / 60);
       const segundos = totalSeconds % 60;
-
-      contador.textContent = `Estamos juntos há: ${anos} ano(s), ${meses} mês(es), ${dias} dia(s), ${horas} hora(s), ${minutos} minuto(s) e ${segundos} segundo(s) 💘`;
-    }
-
-    updateCounter();
-    setInterval(updateCounter, 1000);
-
-    const music = document.getElementById("music");
-    const btn = document.getElementById("playPauseBtn");
-
-    btn.addEventListener("click", () => {
-      if (music.paused) {
-        music.play().catch(() => {
-          alert("Para escutar a música, por favor toque o botão 👍");
-        });
-        btn.textContent = "⏸️";
-      } else {
-        music.pause();
-        btn.textContent = "▶️";
-      }
-    });
-
-    const slides = document.querySelectorAll(".slide");
-    let index = 0;
-    setInterval(() => {
-      slides.forEach(slide => slide.classList.remove("active"));
-      slides[index].classList.add("active");
-      index = (index + 1) % slides.length;
-    }, 3000);
-
-    // Efeito: GIFs de corações flutuando aleatoriamente
-    const heartContainer = document.getElementById('hearts-container');
-    function createHeart() {
-      const heart = document.createElement('img');
-      heart.classList.add('gif-heart');
-      heart.src = 'http
+      contador.textContent = `Estamos juntos há: ${anos} ano(s), ${meses} mês(es), ${dias} dia(s
