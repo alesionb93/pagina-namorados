@@ -153,4 +153,21 @@ body {
     opacity: 0;
     transform: scale(1.2) translateY(-150px);
   }
+  .gif-coracoes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0;
+  animation: gifFade 6s infinite ease-in-out;
+}
+
+@keyframes gifFade {
+  0%, 100% { opacity: 0; }
+  40% { opacity: 0.5; }
+  60% { opacity: 0.5; }
 }
