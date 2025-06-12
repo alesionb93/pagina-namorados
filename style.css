@@ -9,29 +9,55 @@ body {
 }
 .player {
   padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 .cover {
   width: 100px;
   border-radius: 10px;
 }
+.info {
+  font-size: 1.2em;
+}
+#playPauseBtn {
+  background: white;
+  color: pink;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 10px;
+}
 .carousel {
   position: relative;
   height: 300px;
+  max-width: 100%;
+  overflow: hidden;
 }
 .slide {
   position: absolute;
   opacity: 0;
-  transition: opacity 1s;
+  transition: opacity 1.5s ease-in-out;
   width: 100%;
   height: 300px;
   object-fit: cover;
 }
 .slide.active {
   opacity: 1;
+  z-index: 2;
 }
 .mensagem {
   font-size: 1.2em;
   padding: 20px;
+  text-shadow: 1px 1px 2px #000;
+}
+.contador {
+  font-size: 1.5em;
+  margin: 20px 0;
+  text-shadow: 1px 1px 2px #000;
 }
 .hearts {
   pointer-events: none;
